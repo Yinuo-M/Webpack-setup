@@ -18,15 +18,15 @@ module.exports = merge(common, {
 	devtool: "eval-source-map",
 	//currently there's a bug with HMR for multiple entries on the same page, only the last entry will reload. Adding runtimeChunk:"single" solves this problem. For details see Github
 	//optimization: {
-		//Using runtimeChunk: "single" is recommended for multiple entry points on a single HTML page. But you should only have one entry point a page in most cases.
+	//Using runtimeChunk: "single" is recommended for multiple entry points on a single HTML page. But you should only have one entry point a page in most cases.
 	//	runtimeChunk: "single",
 	//},
 	module: {
 		rules: [
-			//NOTE loaders are applied in reverse order. Css-loader turns css into a JavaScript readable string, and style-loader injects that into the <head> element using JavaScript.
+			//NOTE loaders are applied in reverse order. Css-loader turns css into a JavaScript readable string, and style-loader injects that into the <head> element using JavaScript. Postcss-loader is for autoprefixer.
 			{
 				test: /\.css$/,
-				use: ["style-loader", "css-loader"],
+				use: ["style-loader", "css-loader", "postcss-loader"],
 			},
 		],
 	},

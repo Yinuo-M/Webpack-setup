@@ -66,7 +66,7 @@ module.exports = merge(common, {
 			//NOTE MiniCssExtractPlugin extracts each CSS into a separate CSS file, instead of injecting them into the DOM like styleloader does. This avoids blinking.
 			{
 				test: /\.css$/,
-				use: [MiniCssExtractPlugin.loader, "css-loader"],
+				use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
 			},
 		],
 	},
