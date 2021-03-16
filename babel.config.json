@@ -1,0 +1,13 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env", //NOTE this is the recommended babel library
+			{ "useBuiltIns": "usage", "corejs": 3.9, "debug": true, "modules": false } 
+			/*NOTE useBuiltIns: usage and specifying the corejs version makes babel polyfill only the ES6 methods used in your code. 
+			 * debug: true allows you to see which methods have been polyfilled.
+			 * modules: false stops babel from converting ES6 modules into CommonJS modules. This allows webpack to tree shake, which only work for ES6 modules 
+			 * for more details see LINK https://stackoverflow.com/questions/47663486/webpack-3-babel-and-tree-shaking-not-working
+			 */
+		]
+	]
+}
