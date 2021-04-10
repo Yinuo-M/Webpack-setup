@@ -4,7 +4,7 @@ const path = require("path");
 const common = require("./webpack.common");
 const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsWebpackPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
 	.BundleAnalyzerPlugin;
@@ -24,12 +24,12 @@ module.exports = merge(common, {
 	optimization: {
 		//NOTE setting moduleIds to deterministic allow better long-term caching
 		moduleIds: "deterministic",
-		//NOTE OptimizeCssAssetsWebpackPlugin minifies CSS. TerserPlugin minifies JavaScript. It is automatically applied, but adding to minimizer will overwrite it. So we need to add it back.
-		minimizer: [new OptimizeCssAssetsWebpackPlugin(), new TerserPlugin()],
+		//NOTE CssMinimizerPlugin minifies CSS. TerserPlugin minifies JavaScript. It is automatically applied, but adding to minimizer will overwrite it. So we need to add it back.
+		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
 		//splitChunks: {
 		//chunks: "all", //NOTE chunks: "all" is essential to include both sync and async modules.
 		//cacheGroups: {
-		//NOTE This is to separate third-party packages from your own code, to help with caching. Only do this for key libraries that can't be dynamically imported to avoid creating a gigantic vendors bundle, e.g. react, bootstrap. 
+		//NOTE This is to separate third-party packages from your own code, to help with caching. Only do this for key libraries that can't be dynamically imported to avoid creating a gigantic vendors bundle, e.g. react, bootstrap.
 		//vendor: {
 		//	test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
 		//	name: "vendor",
