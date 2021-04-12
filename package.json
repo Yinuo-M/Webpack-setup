@@ -37,7 +37,7 @@
 	},
 	"dependencies": {
 		"core-js": "^3.9.1",
-		"lodash": "^4.17.21",
+		"lodash-es": "^4.17.21",
 		"workbox-webpack-plugin": "^6.1.1"
 	}
 }
